@@ -1,0 +1,6 @@
+package;version
+requests;2.25.0
+pillow;9.0.0
+cryptography;38.0.0
+jinja2;3.0.0
+numpy;1.21.0
