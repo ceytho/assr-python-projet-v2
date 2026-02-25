@@ -18,8 +18,10 @@ Votre script devra :
   un fichier de configuration
 - parcourir le catalogue de paquets
 - vérifier chaque paquet contre l'API du site https://osv.dev/
-- sortir un fichier CSV contenant le résultat de l'analyse
-- servir un serveur HTTP (sans cache) exposant les résultats de l'analyse
+- selon la configuration ini
+  - afficher l'analyse en sortie stdout
+  - sortir un fichier CSV contenant le résultat de l'analyse
+  - servir un serveur HTTP (sans cache) exposant les résultats de l'analyse
 - gérer les erreurs courantes (fichier introuvable, API injoignable, etc.)
 - être découpé en fonctions (une pour chaque partie essentielle du script)
 - être conforme au guide de style PEP8
@@ -28,6 +30,8 @@ Votre script devra :
 
 Si vous utilisez des bibliothèques tierces (non dans la stdlib), il faut les
 indiquer dans un fichier nommé `requirements.txt`, à rendre avec le projet.
+
+### Mode analyse stdout
 
 En sortie votre script devra afficher le résultat du test pour chaque paquet.
 Exemple :
@@ -42,6 +46,23 @@ cryptography        38.0.0          4
 jinja2              3.0.0           1
 numpy               1.21.0          0
 ```
+
+### Sortie CSV
+
+Le script génère un fichier CSV dont le chemin est configurable. Chaque ligne correspond à un paquet audité.
+
+Format attendu :
+
+```
+package,version,vulns,ids
+requests,2.25.0,2,GHSA-j8r2-6x86-q33q;PYSEC-2023-74
+pillow,9.0.0,3,GHSA-56pw-mpj4-fxjw;GHSA-3f63-hfp8-52jq;PYSEC-2023-175
+cryptography,38.0.0,4,...
+jinja2,3.0.0,1,GHSA-h5c8-rqwp-cp95
+numpy,1.21.0,0,
+```
+
+La colonne `ids` contient les identifiants de vulnérabilités séparés par des points-virgules (`;`), ou est vide si aucune vulnérabilité n'est trouvée.
 
 ### Serveur HTTP
 
