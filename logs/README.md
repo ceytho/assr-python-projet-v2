@@ -19,9 +19,10 @@ Votre script devra :
 - extraire pour chaque ligne : IP source, date, méthode HTTP, endpoint, code de
   statut, taille de la réponse, temps de réponse
 - calculer des statistiques globales sur l'ensemble des requêtes
-- exporter les données parsées dans un fichier CSV
-- exporter les statistiques dans un fichier JSON
-- générer un rapport de synthèse au format HTML
+- exporter 
+  - les données parsées dans un fichier CSV
+  - les statistiques dans un fichier JSON
+  - un rapport de synthèse au format HTML
 - récupérer les paramètres (chemins, nombre de résultats à afficher, etc.)
   depuis un fichier de configuration
 - gérer les erreurs courantes (fichier introuvable, ligne malformée, etc.)
